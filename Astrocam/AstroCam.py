@@ -27,7 +27,6 @@ rqs=RQS_0
 PREVIEW_SIZE = (3700,600)
 PREVIEW_GEOMETRY = "700x600+1+0"
 
-camThread = Thread(target=camHandler)
 
 def camHandler():
     global rqs
@@ -123,6 +122,8 @@ def camHandler():
     print("Quit")        
     #camera.stop_preview()
     
+camThread = Thread(target=camHandler)
+
 def startCamHandler():
     camThread.start()
 
