@@ -67,6 +67,7 @@ def camHandler():
             camera.resolution = DynamicCaptureResolution    #set photo size
             time.sleep(2)                                   #sensor adjustment
             camera.shutter_speed = int(scaleShutterSpeed.get()*10e4) #set exposure time/shutter speed
+            camera.exposure_speed = int(scaleShutterSpeed.get()*10e4) #set exposure time/shutter speed
             camera.exposure_mode = 'off'                    #fix exposure
             g = camera.awb_gains                            #fix white balance
             camera.awb_mode = 'off'
