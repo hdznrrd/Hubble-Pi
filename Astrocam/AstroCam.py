@@ -21,6 +21,9 @@ RQS_CAPTURE=2
 RQS_RECORD=3
 rqs=RQS_0
 
+PREVIEW_SIZE = (350,300)
+PREVIEW_GEOMETRY = "350x300+1+0"
+
 def camHandler():
     global rqs
     rqs = RQS_0
@@ -46,7 +49,7 @@ def camHandler():
     camera.hflip = False
     camera.vflip = False
     camera.crop = (0.0, 0.0, 1.0, 1.0)
-    camera.resolution = (350, 300)
+    camera.resolution = PREVIEW_SIZE
     DynamicCaptureResolution = (4056,3040) #default camera resolution
     RecordingResolution = (1920,1080) #default recording resolution
     #recording default
@@ -79,7 +82,7 @@ def camHandler():
             camera.exposure_mode = 'auto'
             camera.awb_mode = 'auto'
             camera.shutter_speed = camera.exposure_speed
-            camera.resolution = (350, 300)      #resume preview size
+            camera.resolution = PREVIEW_SIZE      #resume preview size
         if rqs == RQS_RECORD:
             print("Record")
             rqs=RQS_0
@@ -92,7 +95,7 @@ def camHandler():
             camera.wait_recording(recording_duration)
             camera.stop_recording()
             camera.stop_preview()
-            camera.resolution = (350, 300)      #resume preview size
+            camera.resolution = PREVIEW_SIZE      #resume preview size
             labelCapVal.set('Recording done!')
         else:
             #set parameter
@@ -142,7 +145,7 @@ tkTop.geometry("130x300+350+0")
 
 previewWin = Tkinter.Toplevel(tkTop)
 previewWin.title('AstroCam')
-previewWin.geometry('350x300+1+0')
+previewWin.geometry(PREVIEW_GEOMETRY)
 previewPanel = Tkinter.Label(previewWin)
 previewPanel.pack(side = "bottom", fill = "both", expand = "yes")
 
