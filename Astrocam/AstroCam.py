@@ -128,6 +128,7 @@ def startCamHandler():
 def quit():
     global rqs
     rqs=RQS_QUIT
+    camThread.join()
 
     global tkTop
     tkTop.destroy()
